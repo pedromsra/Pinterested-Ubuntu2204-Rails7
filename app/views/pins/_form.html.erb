@@ -1,0 +1,15 @@
+<%= form_with model: @pins do |form| %>
+	<div>
+		<%= form.label :title, 'Pin'%><br>
+		<%= form.text_field :title %>
+	</div>
+	
+	<div>
+		<%= form.label :descrpition, 'Descrição' %><br>
+		<%= form.text_area :description %><br>
+	</div>
+	
+	<div>
+		<%= form.submit "Criar Pin" %>
+	</div>
+<% end %>

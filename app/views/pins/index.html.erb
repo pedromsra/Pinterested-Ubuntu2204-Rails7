@@ -1,0 +1,7 @@
+<h1>Lista de Pins</h1>
+
+<% @pins.each do |pin| %>
+	<li><%= link_to pin.title, pin %></li>
+<% end %><br>
+
+<li><%= link_to "Novo Pin", new_pin_path %></li>
