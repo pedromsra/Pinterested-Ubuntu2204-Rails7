@@ -8,16 +8,16 @@ class PinsController < ApplicationController
 	end
 	
 	def new
-		@pins = Pin.new
+		@pins = current_user.pins.build
 	end
 	
 	def create
-		@pins = Pin.new(pin_params)
+		@pins = current_user.pins.build(pin_params)
 		
 		if @pins.save
 			redirect_to @pins, notice: "Pin criado com sucesso"
 		else
-			render :new, status: :unprocessable_entity
+			render :new
 		end
 	end
 	

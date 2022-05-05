@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :pins
+  # resources :pins
   
   root "pins#index"
+
+  resources :pins
+
 end
