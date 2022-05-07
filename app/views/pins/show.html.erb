@@ -4,7 +4,7 @@
 
 <p>Enviado por <%= @pins.user.email%>, no dia <%= @pins.user.created_at.time.day %>/<%= @pins.user.created_at.time.month %>/<%= @pins.user.created_at.time.year %></p>
 
-<li><%= link_to "Editar Pin", edit_pin_path(@pins) %></li>
-<li><%= link_to "Apagar Pin", pin_path(@pins), data:{turbo_method: :delete, turbo_confirm: "Confirmar"} %></li>
-<li><%= link_to "Voltar", root_path %></li>
+<li><%= link_to "Editar Pin", edit_pin_path(@pins) %> | 
+<%= link_to "Apagar Pin", pin_path(@pins), data:{turbo_method: :delete, turbo_confirm: "Confirmar"} %>
+ | <%= link_to "Voltar", root_path %></li>
 
