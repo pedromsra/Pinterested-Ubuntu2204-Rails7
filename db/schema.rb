@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_05_030720) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_07_023953) do
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "pin_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pin_id"], name: "index_likes_on_pin_id"
+    t.index ["user_id", "pin_id"], name: "index_likes_on_user_id_and_pin_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "pinits", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "pin_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pin_id"], name: "index_pinits_on_pin_id"
+    t.index ["user_id"], name: "index_pinits_on_user_id"
+  end
+
   create_table "pins", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -33,4 +52,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_05_030720) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "likes", "pins"
+  add_foreign_key "likes", "users"
+  add_foreign_key "pinits", "pins"
+  add_foreign_key "pinits", "users"
 end

@@ -9,5 +9,7 @@ class User < ApplicationRecord
     self.role ||= :user
   end
 
-  has_many :pins
+  has_many :pins, :dependent => :delete_all 
+  has_many :likes, :dependent => :delete_all 
+
 end

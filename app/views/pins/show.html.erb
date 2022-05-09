@@ -3,8 +3,19 @@
 <p><%= @pins.description %></p>
 
 <p>Enviado por <%= @pins.user.email%>, no dia <%= @pins.user.created_at.time.day %>/<%= @pins.user.created_at.time.month %>/<%= @pins.user.created_at.time.year %></p>
+<% if current_user %>
+    <% if Like.where(:pin => @pins.id, :user => current_user.id).ids[0].nil? %>
+        <!-- Não entendi commo funciona o form abaixo -->
+        <%= button_to "Like", like_path(@pins), method: "put" %>
+    <% else %>
+        <%= button_to "Like", like_path(@pins), method: "put", disabled: true %> <!-- Como adicionar o Unlike? ou Remover o Like? -->
+    <% end %>
+    </br></br>
+    <%= link_to "Editar Pin", edit_pin_path(@pins) %> | 
+    <%= link_to "Apagar Pin", pin_path(@pins), data:{turbo_method: :delete, turbo_confirm: "Confirmar"} %> |
+<% end %>
 
-<li><%= link_to "Editar Pin", edit_pin_path(@pins) %> | 
-<%= link_to "Apagar Pin", pin_path(@pins), data:{turbo_method: :delete, turbo_confirm: "Confirmar"} %>
- | <%= link_to "Voltar", root_path %></li>
+
+
+<%= link_to "Voltar", root_path %>
 

@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   resources :pins
 
+  put "/pins/:id/like", to: "pins#like", as: "like"
+
 end
