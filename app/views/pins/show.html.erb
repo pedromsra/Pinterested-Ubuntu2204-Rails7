@@ -8,7 +8,7 @@
         <!-- Não entendi commo funciona o form abaixo -->
         <%= button_to "Like", like_path(@pins), method: "put" %>
     <% else %>
-        <%= button_to "Like", like_path(@pins), method: "put", disabled: true %> <!-- Como adicionar o Unlike? ou Remover o Like? -->
+        <%= button_to "Unlike", unlike_path(@pins), method: :delete %> <!-- Como adicionar o Unlike? ou Remover o Like? -->
     <% end %>
     </br></br>
     <%= link_to "Editar Pin", edit_pin_path(@pins) %> | 

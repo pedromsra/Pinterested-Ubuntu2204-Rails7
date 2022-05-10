@@ -12,4 +12,6 @@ Rails.application.routes.draw do
 
   put "/pins/:id/like", to: "pins#like", as: "like"
 
+  delete "/likes/:id", to: "likes#unlike", as: "unlike"
+
 end
