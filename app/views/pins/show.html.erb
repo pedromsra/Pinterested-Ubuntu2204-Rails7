@@ -12,7 +12,7 @@
     <% end %>
     </br></br>
     <%= link_to "Editar Pin", edit_pin_path(@pins) %> | 
-    <%= link_to "Apagar Pin", pin_path(@pins), data:{turbo_method: :delete, turbo_confirm: "Confirmar"} %> |
+    <%= link_to "Apagar Pin", @pins, data:{'method': :delete, 'confirm': "Está certo disso?"} %> |
 <% end %>
 
 

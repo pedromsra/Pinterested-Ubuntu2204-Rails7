@@ -52,8 +52,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_07_023953) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "likes", "pins"
-  add_foreign_key "likes", "users"
+  add_foreign_key "likes", "pins", on_delete: :cascade
+  add_foreign_key "likes", "users", on_delete: :cascade
   add_foreign_key "pinits", "pins"
   add_foreign_key "pinits", "users"
 end

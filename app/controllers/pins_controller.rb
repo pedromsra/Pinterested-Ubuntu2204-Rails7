@@ -1,5 +1,5 @@
 class PinsController < ApplicationController
-	#before_action :set_pin, only:[:show, :edit, :update, :destroy]
+
 	before_action :authenticate_user!, except:[:index, :show]
 	before_action :correct_user?, only:[:edit, :update, :destroy]
 
@@ -42,7 +42,7 @@ class PinsController < ApplicationController
 	def destroy
 		@pins = Pin.find(params[:id])
 		@pins.destroy
-		
+
 		redirect_to root_path, status: :see_other, notice: "Pin removido com sucesso"
 	end
 
@@ -60,6 +60,6 @@ class PinsController < ApplicationController
 
 	def correct_user?
         @pins = current_user.pins.find_by(id: params[:id])
-        redirect_to pins_path, notice: "Not authorized to edit this pin" if @pins.nil?
+        redirect_to pin_path, notice: "Not authorized to edit this pin" if @pins.nil?
     end
 end

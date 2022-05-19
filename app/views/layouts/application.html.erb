@@ -8,12 +8,14 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
   </head>
 
   <body>
       <%= render 'pins/header' %>
-      <div class="alert alert-primary" role="alert"><%= notice %><%= alert %></div>
+      <% if !notice.nil? %>
+        <div class="alert alert-primary" role="alert"><%= notice %><%= alert %></div>
+      <% end %>
       <%= yield %>
   </body>
 </html>
